@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+{% block title %}예측 결과{% endblock %}
+
+{% block result %}
+    <div class="container-sm" style="margin-top: 30px; margin-bottom: 10px;">
+
+        <p>{{apt_nm}} / {{apt_fl}}층 / {{apt_use}}평</p>
+        <h1>예상 매매가 : {{pred}}원</h1>
+
+    </div>
+{% endblock %}

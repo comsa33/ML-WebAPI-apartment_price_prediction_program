@@ -1,0 +1,48 @@
+Bottleneck @ file:///Users/ktietz/demo/mc3/conda-bld/bottleneck_1629791503532/work
+brotlipy==0.7.0
+category-encoders @ file:///tmp/build/80754af9/category_encoders_1633413589380/work/dist
+certifi==2021.5.30
+cffi @ file:///Users/runner/miniforge3/conda-bld/cffi_1636046166270/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click==8.0.3
+cryptography @ file:///Users/builder/miniconda3/envs/prefect/conda-bld/cryptography_1635432108608/work
+cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+dnspython==1.16.0
+Flask @ file:///tmp/build/80754af9/flask_1634118196080/work
+fonttools==4.25.0
+gunicorn @ file:///Users/ktietz/demo/mc3/conda-bld/gunicorn_1629874228120/work
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
+Jinja2 @ file:///tmp/build/80754af9/jinja2_1635780242639/work
+joblib @ file:///tmp/build/80754af9/joblib_1635411271373/work
+kiwisolver @ file:///Users/ktietz/demo/mc3/conda-bld/kiwisolver_1628942354602/work
+lightgbm @ file:///Users/ktietz/demo/mc3/conda-bld/lightgbm_1629800013805/work
+MarkupSafe @ file:///Users/ktietz/demo/mc3/conda-bld/markupsafe_1629137411893/work
+matplotlib @ file:///Users/builder/miniconda3/envs/prefect/conda-bld/matplotlib-suite_1638374039169/work
+munkres==1.1.4
+numexpr @ file:///Users/ktietz/demo/mc3/conda-bld/numexpr_1629896363046/work
+numpy==1.21.4
+olefile @ file:///Users/ktietz/demo/mc3/conda-bld/olefile_1629805411829/work
+packaging @ file:///tmp/build/80754af9/packaging_1637314298585/work
+pandas==1.3.4
+patsy @ file:///home/conda/feedstock_root/build_artifacts/patsy_1632667180946/work
+Pillow @ file:///Users/ktietz/demo/mc3/conda-bld/pillow_1628860154764/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pymongo==3.12.0
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1635333100036/work
+pyparsing @ file:///tmp/build/80754af9/pyparsing_1635766073266/work
+PySocks @ file:///Users/ktietz/Code/oss/ci_pkgs/pysocks_1626781349491/work
+python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/python-dotenv_1636649191224/work
+pytz==2021.3
+requests @ file:///tmp/build/80754af9/requests_1629994808627/work
+scikit-learn @ file:///Users/builder/miniconda3/envs/prefect/conda-bld/scikit-learn_1635339011232/work
+scipy @ file:///Users/ktietz/demo/mc3/conda-bld/scipy_1629907664009/work
+seaborn @ file:///tmp/build/80754af9/seaborn_1629307859561/work
+six @ file:///tmp/build/80754af9/six_1623709665295/work
+statsmodels @ file:///Users/runner/miniforge3/conda-bld/statsmodels_1636765320610/work
+threadpoolctl @ file:///Users/ktietz/demo/mc3/conda-bld/threadpoolctl_1629802263681/work
+tornado @ file:///Users/ktietz/demo/mc3/conda-bld/tornado_1628698929452/work
+urllib3==1.26.7
+Werkzeug @ file:///tmp/build/80754af9/werkzeug_1635505089296/work
+xgboost==1.5.0
