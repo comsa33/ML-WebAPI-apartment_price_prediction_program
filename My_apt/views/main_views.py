@@ -30,6 +30,7 @@ def result(usr_info):
     usr_info = eval(usr_info)
     model = AptSales_Model()
     pred = model.predict_sales(RandomForestRegressor(), usr_info[0], usr_info[1], usr_info[2])
+    pred = format(int(pred[0]/10000000), ',')
     return render_template('result.html', 
-                            month=month, day=day, year=year, pred=int(pred[0]),
+                            month=month, day=day, year=year, pred=pred,
                             apt_nm=usr_info[0], apt_fl=usr_info[1], apt_use=usr_info[2]), 200
