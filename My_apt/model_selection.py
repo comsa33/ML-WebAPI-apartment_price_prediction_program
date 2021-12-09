@@ -64,27 +64,27 @@ class GridSearch_Model(AptSales_Model):
         
 if __name__ == '__main__':
     model = GridSearch_Model()
-    # params = {
-    #     "n_estimators":[50], 
-    #     "criterion":["squared_error"], 
-    #     "max_depth":[13], 
-    #     "min_samples_split":[3], 
-    #     "min_samples_leaf":[1], 
-    #     "max_leaf_nodes":[None],
-    #     "oob_score":[True], 
-    #     "n_jobs":[-1], 
-    #     "random_state":[1], 
-    #     "ccp_alpha":[0.] 
-    #     }
-    # print(model.model(RandomForestRegressor(), params))
-    params = {'nthread':[4], #when use hyperthread, xgboost may become slower
-              'objective':['reg:linear'],
-              'learning_rate': [.0001], #so called `eta` value
-              'max_depth': [None],
-            #   'min_child_weight': [1],
-              'silent': [1],
-              'subsample': [0.7],
-              'colsample_bytree': [0.7],
-              'n_estimators': [500]}
-    print(model.model(XGBRegressor(random_state=1, cv=2, n_jobs=-1, verbose=True), params).__dir__())
+    params = {
+        "n_estimators":[50], 
+        "criterion":["squared_error"], 
+        "max_depth":[13], 
+        "min_samples_split":[3], 
+        "min_samples_leaf":[1], 
+        "max_leaf_nodes":[None],
+        "oob_score":[True], 
+        "n_jobs":[-1], 
+        "random_state":[1], 
+        "ccp_alpha":[0.] 
+        }
+    print(model.model(RandomForestRegressor(), params))
+    # params = {'nthread':[4], #when use hyperthread, xgboost may become slower
+    #           'objective':['reg:linear'],
+    #           'learning_rate': [.0001], #so called `eta` value
+    #           'max_depth': [None],
+    #         #   'min_child_weight': [1],
+    #           'silent': [1],
+    #           'subsample': [0.7],
+    #           'colsample_bytree': [0.7],
+    #           'n_estimators': [500]}
+    # print(model.model(XGBRegressor(random_state=1, cv=2, n_jobs=-1, verbose=True), params).__dir__())
     
