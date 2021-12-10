@@ -12,6 +12,10 @@
     <title>
         {% block title %} 이루오 프로젝트 {% endblock %}
     </title>
+    <div class="container-sm">
+        
+        <img src="{{url_for('static',filename = 'images/main_head-001.png')}}" class="img-fluid" alt="...">
+    </div>
 
 
 </head>
@@ -20,7 +24,6 @@
 
     <div class="container-sm">
         
-        <img src="{{url_for('static',filename = 'images/main_head-001.png')}}" class="img-fluid" alt="...">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -66,23 +69,35 @@
 
     
     {% block body %}
-    <style> 
-        .centered { 
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            
-        } 
-    </style> 
-    <div class="centered"> 
-        <div class="item">
-            <p class="fw-lighter" style="font-size: 100px;">{{year}}-{{month}}-{{day}}</p>
-        </div> 
+    <div class="container-sm" style="margin-bottom: 300px;">
+        <style> 
+            .centered { 
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                
+            } 
+        </style> 
+        <div class="centered"> 
+            <div class="item">
+                <p class="fw-lighter" style="font-size: 100px;">{{year}}-{{month}}-{{day}}</p>
+            </div> 
+        </div>
     </div>
     {% endblock %}
 
+    <div class="container-sm">
     
+        
+        <img 
+            src="{{url_for('static',filename = 'images/tail-001.png')}}" 
+            class="img-fluid" 
+            style="margin-top: 10px;"
+            alt="...">
+       
+        
+    </div>
 
     
 

@@ -78,6 +78,7 @@ class AptSales_Model:
 
         ### save new df into sql table
         df_copy.to_sql('new_apt_sales', self.conn, if_exists='replace', index=False)
+        # df_copy.to_csv('new_apt_sales.csv')
         self.conn.commit()
 
         return df_copy
@@ -154,7 +155,7 @@ class AptSales_Model:
         rmse = mean_squared_error(y_test, y_pred)**0.5
         r2 = r2_score(y_test, y_pred)
 
-        with open(f'./logs/{type(model_name).__name__}_{datetime.datetime.now()}.txt', 'w') as log_file:
+        with open(f'./My_apt/logs/{type(model_name).__name__}_{datetime.datetime.now()}.txt', 'w') as log_file:
             log_file.write(f"<BEGIN>\n<<<Model Description>>>\n")
             log_file.write("="*50+'\n')
             log_file.write(f"""{pipeline.named_steps['transformedtargetregressor'].regressor}\n""")
@@ -226,5 +227,12 @@ if __name__ == '__main__':
     #                                         min_samples_leaf=1, 
     #                                         max_leaf_nodes=None, n_jobs=-1, 
     #                                         random_state=1))
-    print(model.predict_sales(RandomForestRegressor(), "광복현대아파트", "15", "45"))
-    
+    # print(model.predict_sales(RandomForestRegressor(), "광복현대아파트", "15", "45"))
+    # model.evaluate_model(RandomForestRegressor(n_estimators=50, 
+    #                                         criterion="squared_error", 
+    #                                         max_depth=13, 
+    #                                         min_samples_split=3, 
+    #                                         min_samples_leaf=1, 
+    #                                         max_leaf_nodes=None, n_jobs=-1, 
+    #                                         random_state=1))
+    model.evaluate_model(LGBMRegressor())
