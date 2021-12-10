@@ -69,20 +69,9 @@
 
     
     {% block body %}
-    <div class="container-sm" style="margin-bottom: 300px;">
-        <style> 
-            .centered { 
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                
-            } 
-        </style> 
-        <div class="centered"> 
-            <div class="item">
+    <div class="container-sm">
+        <div style="margin-top: 30px; margin-bottom: 10px; text-align:center; vertical-align:middle;"> 
                 <p class="fw-lighter" style="font-size: 100px;">{{year}}-{{month}}-{{day}}</p>
-            </div> 
         </div>
     </div>
     {% endblock %}

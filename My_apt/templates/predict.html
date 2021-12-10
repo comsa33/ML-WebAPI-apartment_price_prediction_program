@@ -4,17 +4,10 @@
 
 {% block body %}
 
-<div class="container-sm" style="margin-bottom: 500px;">
-    <style> 
-        .centered { 
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            
-        } 
-    </style> 
-    <div class="centered">
+<div class="container-sm">
+
+    <div 
+    style="margin-top: 30px; margin-bottom: 10px; text-align:center; vertical-align:middle;">
         <h3>
             <p 
             class="fw-lighter"
@@ -48,7 +41,7 @@
                     자신의 아파트 정보를 맞게 입력하고 예측하기 버튼을 눌러주세요.
                 </p>
             </div>
-            <form action="#" method="post">
+            <form action="{{url_for('main.prediction')}}" method="post">
                 <div class="dropdown mt-3">
                     <ul class="list-group">
                         <p>아파트 이름</p>
@@ -105,7 +98,7 @@
                             <option value= "미도2차">
                             <option value= "미도3차">
                             <option value= "미도아파트2차">
-                            <option value= "바움캐슬 주상복합 아">파트
+                            <option value= "바움캐슬 주상복합 아파트">
                             <option value= "브라운스톤">
                             <option value= "브라운스톤2차">
                             <option value= "비엔팰리스">
@@ -116,7 +109,7 @@
                             <option value= "성원">
                             <option value= "성원아파트">
                             <option value= "쌍마한신">
-                            <option value= "아크포레자이위브(2단">지)
+                            <option value= "아크포레자이위브(2단지)">
                             <option value= "안서">
                             <option value= "영화">
                             <option value= "영화아이닉스">
@@ -171,7 +164,7 @@
                             <option value= "현대1">
                             <option value= "현대2">
                             <option value= "현진에버빌">
-                            <option value= "힐팰리스  ">
+                            <option value= "힐팰리스">
 
                         </datalist>
                     </ul>

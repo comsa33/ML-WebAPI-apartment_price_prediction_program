@@ -3,6 +3,9 @@ import numpy as np
 import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
+import plotly
+import json
 from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
 from category_encoders import OneHotEncoder, OrdinalEncoder
 from sklearn.impute import SimpleImputer
@@ -195,6 +198,22 @@ class AptSales_Model:
     def read_new_sql(self):
         df = pd.read_sql("SELECT * FROM new_apt_sales", self.conn)
         return df
+    
+    def get_data_with_aptnm(self, apt_nm):
+        df = self.read_new_sql()
+        gb_df = df.groupby("APT_NM")['SALES'].agg(['mean', 'min', 'max']).reset_index()
+        mean_apt = gb_df[gb_df['APT_NM'] == apt_nm]
+        # return int(mean_apt['mean']), int(mean_apt['min']), int(mean_apt['max'])
+        new_df = mean_apt.T.reset_index()[1:]
+        cols = new_df.columns.to_list()
+        new_df = new_df.rename(columns={cols[0]:'method', cols[1]:'value'})
+        return new_df
+    
+    def plot_apt(self, apt_nm):
+        df = self.get_data_with_aptnm(apt_nm)
+        fig = px.bar(df, x='method', y='value')
+        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        return graphJSON
 
     def write_new_sql(self, new_data):
         self.cur.execute("INSERT INTO new_apt_sales VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", new_data)
@@ -235,4 +254,5 @@ if __name__ == '__main__':
     #                                         min_samples_leaf=1, 
     #                                         max_leaf_nodes=None, n_jobs=-1, 
     #                                         random_state=1))
-    model.evaluate_model(LGBMRegressor())
+    # model.evaluate_model(LGBMRegressor())
+    print(model.plot_apt('광명한진타운'))
