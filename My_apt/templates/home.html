@@ -12,9 +12,9 @@
     <title>
         {% block title %} 이루오 프로젝트 {% endblock %}
     </title>
-    <div class="container-sm">
+    <div class="container-fluid">
         
-        <img src="{{url_for('static',filename = 'images/main_head-001.png')}}" class="img-fluid" alt="...">
+        <img src="{{url_for('static',filename = 'images/main_head-002.png')}}" class="img-fluid" alt="...">
     </div>
 
 
@@ -22,12 +22,14 @@
 
 <body>
 
-    <div class="container-sm">
+    <div class="container-fluid">
         
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{{url_for('main.main')}}">얼마요</a>
+              <a class="navbar-brand" href="{{url_for('main.main')}}">
+                <img src="{{url_for('static',filename = 'images/home_btn-001.png')}}" class="img-fluid" alt="...">
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -66,25 +68,30 @@
     </div>
 
     
-
+    
     
     {% block body %}
-    <div class="container-sm">
-        <div style="margin-top: 30px; margin-bottom: 10px; text-align:center; vertical-align:middle;"> 
-                <p class="fw-lighter" style="font-size: 100px;">{{year}}-{{month}}-{{day}}</p>
+    <div class="container-fluid">
+
+        <img 
+        src="{{url_for('static',filename = 'images/bar1-001.png')}}" 
+        class="img-fluid" 
+        style="margin-top: 10px;"
+        alt="...">
+
+        <div style="margin-top: -10px; margin-bottom: 10px; text-align:center; vertical-align:middle;"> 
+                <p class="fw-lighter" style="color:rgb(79, 199, 159); font-size: 10vw;">{{year}}-{{month}}-{{day}}</p>
         </div>
+
     </div>
     {% endblock %}
-
-    <div class="container-sm">
+    <div class="container-fluid">
     
-        
-        <img 
-            src="{{url_for('static',filename = 'images/tail-001.png')}}" 
-            class="img-fluid" 
-            style="margin-top: 10px;"
-            alt="...">
-       
+      <img 
+          src="{{url_for('static',filename = 'images/tail2-001.png')}}" 
+          class="img-fluid" 
+          style="margin-top: 0px;"
+          alt="...">
         
     </div>
 
