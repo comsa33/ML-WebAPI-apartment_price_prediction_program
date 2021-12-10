@@ -1,0 +1,186 @@
+{% extends "home.html" %}
+{% block title %}집값예측{% endblock %}
+{% block nav_prediction %} nav-link active {% endblock %}
+
+{% block body %}
+
+<div class="container-sm">
+    <style> 
+        .centered { 
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+        } 
+    </style> 
+    <div class="centered">
+        <h3>
+            <p 
+            class="fw-lighter"
+            style="margin-bottom: 20px; text-align:center; font-size: 50px; color:darkslategray">
+                {{year}}-{{month}}-{{day}}
+            </p>                    
+        </h3>
+        
+        <button 
+        class="btn btn-outline-danger" 
+        type="button" 
+        data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasExample" 
+        aria-controls="offcanvasExample" 
+        style="margin-bottom: 30px;">
+            내 아파트 가격 예측하기
+        </button>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">내 아파트 정보 선택하기</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <div>
+                <p style="color:darkgray">
+                    자신의 아파트 정보를 맞게 입력하고 예측하기 버튼을 눌러주세요.
+                </p>
+            </div>
+            <form action="#" method="post">
+                <div class="dropdown mt-3">
+                    <ul class="list-group">
+                        <p>아파트 이름</p>
+                        <input type="text" name="apt" list="aptname" style="margin-bottom: 30px;">
+                        <p>아파트 층수</p>
+                        <input type="text" name="floor" style="margin-bottom: 30px;">
+                        <p>아파트 평수</p>
+                        <input type="text" name="space" style="margin-bottom: 30px;">
+                        <datalist id="aptname">
+                            <option value="개운고층">
+                            <option value="개운저층">
+                            <option value="광명 두산위브 트레지움">
+                            <option value="광명(308-2)">
+                            <option value="광명동리버빌A동">
+                            <option value="광명리버빌B동">
+                            <option value="광명삼익">
+                            <option value="광명소하휴먼시아2단지">
+                            <option value="광명소하휴먼시아3단지">
+                            <option value="광명소하휴먼시아5단지">
+                            <option value="광명소하휴먼시아7단지">
+                            <option value="광명신원">
+                            <option value="광명신촌휴먼시아1단지">
+                            <option value="광명역 써밋플레이스">
+                            <option value="광명역세권휴먼시아3단지">
+                            <option value="광명역세권휴먼시아4단지">
+                            <option value="광명역세권휴먼시아5단지">
+                            <option value= "광명역센트럴자이">
+                            <option value= "광명역파크자이">
+                            <option value= "광명역푸르지오">
+                            <option value= "광명제일풍경채">
+                            <option value= "광명주택조합현대">
+                            <option value= "광명푸르지오">
+                            <option value= "광명한진타운">
+                            <option value= "광명해모로이연">
+                            <option value= "광명현대">
+                            <option value= "광명현대아파트">
+                            <option value= "광명휴먼림">
+                            <option value= "광복현대">
+                            <option value= "광복현대아파트">
+                            <option value= "극동메모리스">
+                            <option value= "금반석시티2차">
+                            <option value= "금호어울림">
+                            <option value= "기아파크빌">
+                            <option value= "다나안">
+                            <option value= "더프라임타워">
+                            <option value= "도덕파크타운1단지">
+                            <option value= "도덕파크타운2단지">
+                            <option value= "동양(55-0)">
+                            <option value= "동양메이저2">
+                            <option value= "두산위브">
+                            <option value= "두산위브트레지움">
+                            <option value= "롯데낙천대">
+                            <option value= "미도1차">
+                            <option value= "미도2차">
+                            <option value= "미도3차">
+                            <option value= "미도아파트2차">
+                            <option value= "바움캐슬 주상복합 아">파트
+                            <option value= "브라운스톤">
+                            <option value= "브라운스톤2차">
+                            <option value= "비엔팰리스">
+                            <option value= "삼성(301-8)">
+                            <option value= "상우1차">
+                            <option value= "상우2차">
+                            <option value= "상우3차">
+                            <option value= "성원">
+                            <option value= "성원아파트">
+                            <option value= "쌍마한신">
+                            <option value= "아크포레자이위브(2단">지)
+                            <option value= "안서">
+                            <option value= "영화">
+                            <option value= "영화아이닉스">
+                            <option value= "예건">
+                            <option value= "오덕">
+                            <option value= "오크팰리스">
+                            <option value= "우림아파트">
+                            <option value= "우림필유">
+                            <option value= "우성아파트">
+                            <option value= "월곡갑을명가">
+                            <option value= "월드메르디앙">
+                            <option value= "유-플래닛 태영데시앙">
+                            <option value= "유자인">
+                            <option value= "윤정하이빌">
+                            <option value= "이성">
+                            <option value= "이편한세상센트레빌">
+                            <option value= "저층주공10">
+                            <option value= "저층주공11">
+                            <option value= "저층주공4">
+                            <option value= "저층주공7">
+                            <option value= "저층주공8">
+                            <option value= "저층주공9">
+                            <option value= "정다움">
+                            <option value= "주공1">
+                            <option value= "주공10">
+                            <option value= "주공11">
+                            <option value= "주공12">
+                            <option value= "주공13">
+                            <option value= "주공2">
+                            <option value= "주공3">
+                            <option value= "주공4">
+                            <option value= "주공5">
+                            <option value= "주공6">
+                            <option value= "주공7">
+                            <option value= "주공8(고층)">
+                            <option value= "주공8(저층)">
+                            <option value= "주공9">
+                            <option value= "중앙하이츠1">
+                            <option value= "중앙하이츠2">
+                            <option value= "중앙하이츠3">
+                            <option value= "철산래미안자이">
+                            <option value= "철산리버빌">
+                            <option value= "철산리버빌 주공아파트">
+                            <option value= "철산센트럴푸르지오">
+                            <option value= "철산푸르지오하늘채">
+                            <option value= "철산한신">
+                            <option value= "팰리스필">
+                            <option value= "팰리스필 2차(782)">
+                            <option value= "프리미어">
+                            <option value= "하안주택조합현대">
+                            <option value= "하안현대아파트">
+                            <option value= "현대1">
+                            <option value= "현대2">
+                            <option value= "현진에버빌">
+                            <option value= "힐팰리스  ">
+
+                        </datalist>
+                    </ul>
+                    <button type="submit" value="submit" class="btn btn-outline-danger" style="float: right; margin-top:30px;">예측가격보기</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -10,19 +10,22 @@ def main():
     month = str(datetime.today().month).zfill(2)
     day = str(datetime.today().day).zfill(2)
     year = datetime.today().year
-    return render_template('main.html', month=month, day=day, year=year), 200
+    return render_template('home.html', month=month, day=day, year=year), 200
 
-@main_bp.route('/', methods=['POST', 'GET'])
+@main_bp.route('/predict/', methods=['POST', 'GET'])
 def get_input():
     if request.method == 'POST':
         apt_nm = request.form["apt"]
         apt_fl = request.form["floor"]
         apt_use = request.form["space"]
-        return redirect(url_for("main.result", usr_info=[apt_nm, apt_fl, apt_use]))
+        return redirect(url_for("main.result", usr_info=[apt_nm, apt_fl, apt_use])), 200
     else:
-        return render_template('main.html'), 200
+        month = str(datetime.today().month).zfill(2)
+        day = str(datetime.today().day).zfill(2)
+        year = datetime.today().year
+        return render_template('predict.html', month=month, day=day, year=year), 200
 
-@main_bp.route('/<usr_info>')
+@main_bp.route('/predict/<usr_info>')
 def result(usr_info):
     month = str(datetime.today().month).zfill(2)
     day = str(datetime.today().day).zfill(2)
@@ -34,3 +37,30 @@ def result(usr_info):
     return render_template('result.html', 
                             month=month, day=day, year=year, pred=pred,
                             apt_nm=usr_info[0], apt_fl=usr_info[1], apt_use=usr_info[2]), 200
+
+@main_bp.route('/dashboard')        
+def dashboard():
+    return render_template('dashboard.html'), 200
+
+@main_bp.route('/predict')        
+def prediction():
+    month = str(datetime.today().month).zfill(2)
+    day = str(datetime.today().day).zfill(2)
+    year = datetime.today().year
+    return render_template('predict.html', month=month, day=day, year=year), 200
+
+@main_bp.route('/project/pipeline')        
+def pipeline():
+    return render_template('pipeline.html'), 200
+
+@main_bp.route('/project/database')        
+def database():
+    return render_template('database.html'), 200
+
+@main_bp.route('/project/mymodel')        
+def model():
+    return render_template('model.html'), 200
+
+@main_bp.route('/project/presentation')        
+def presentation():
+    return render_template('presentation.html'), 200
