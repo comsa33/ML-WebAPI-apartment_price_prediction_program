@@ -6,12 +6,13 @@
     class="container-sm" 
     style="margin-top: 30px; margin-bottom: 10px; text-align:center; vertical-align:middle;">
 
-        <p>{{apt_nm}} / {{apt_fl}}층 / {{apt_use}}평</p>
+        <p style="margin-bottom: 5px;">{{apt_nm}} / {{apt_fl}}층 / {{apt_use}}평</p>
         <h1>예상 매매가 : ₩ {{pred}}천만원</h1>
         <a href="{{url_for('main.prediction')}}">
             <button type="button" class="btn btn-outline-success">다시 예측하기</button>
         </a>
-        <div id = "chart"></div>
+        <h3 style="text-align:left; margin-top: 100px; margin-left: 70px; margin-bottom: 0px">"{{apt_nm}}" 평균/최소/최대 매매가 비교</h3>
+        <div style="margin-top: 0px;" id = "chart"></div>
         
     </div>
 
@@ -19,7 +20,7 @@
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script>
         var graph = {{ graphJSON | safe}};
-        Plotly.plot("chart", graph, {})
+        Plotly.plot("chart", graph, {});
         
     </script>
 {% endblock %}

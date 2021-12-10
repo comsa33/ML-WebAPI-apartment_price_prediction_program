@@ -120,25 +120,59 @@ class AptSales_Model:
         y_test = test_df[target]
 
         return X_train, X_test, y_train, y_test, train_df, test_df
-
-    ## build regression model   
+        
     def model(self, model_name, use_all_data=False):
-
         X_train, X_test, y_train, y_test, train_df, test_df = self.split_data()
-        pipeline = make_pipeline(
+
+        if type(model_name).__name__.lower() == 'xgbregressor' or 'lgbmregressor':
+            pipeline = make_pipeline(
+                            OrdinalEncoder(),
+                            SimpleImputer(),
+                            StandardScaler())
+            X_train = pipeline.fit_transform(X_train)
+            X_test = pipeline.transform(X_test)
+            tt = TransformedTargetRegressor(
+                                regressor=model_name, 
+                                func=np.log, inverse_func=np.exp)                
+            
+            if use_all_data:
+                return tt.fit(train_df, test_df)
+
+            else:
+                return tt.fit(X_train, y_train), X_test, y_test
+            
+        else:
+            pipeline = make_pipeline(
                 OrdinalEncoder(),
                 SimpleImputer(),
                 StandardScaler(),
                 TransformedTargetRegressor(
                     regressor=model_name, 
-                    func=np.log, inverse_func=np.exp)
-            )
+                    func=np.log, inverse_func=np.exp))
+            if use_all_data:
+                return pipeline.fit(train_df, test_df)
 
-        if use_all_data:
-            return pipeline.fit(train_df, test_df)
+            else:
+                return pipeline.fit(X_train, y_train), X_test, y_test
 
-        else:
-            return pipeline.fit(X_train, y_train), X_test, y_test
+    ## build regression model   
+    # def model(self, model_name, use_all_data=False):
+
+    #     X_train, X_test, y_train, y_test, train_df, test_df = self.split_data()
+    #     pipeline = make_pipeline(
+    #             OrdinalEncoder(),
+    #             SimpleImputer(),
+    #             StandardScaler(),
+    #             TransformedTargetRegressor(
+    #                 regressor=model_name, 
+    #                 func=np.log, inverse_func=np.exp)
+    #         )
+
+    #     if use_all_data:
+    #         return pipeline.fit(train_df, test_df)
+
+    #     else:
+    #         return pipeline.fit(X_train, y_train), X_test, y_test
 
     ## pickle the model
     def save_model(self, model_name, use_all_data=False):
@@ -243,6 +277,7 @@ class AptSales_Model:
 
 if __name__ == '__main__':
     model = AptSales_Model()
+    model.evaluate_model(XGBRegressor(learning_rate=0.300000012, n_jobs=-1))
     # model.save_model(RandomForestRegressor(n_estimators=50, 
     #                                         criterion="squared_error", 
     #                                         max_depth=13, 
@@ -259,4 +294,4 @@ if __name__ == '__main__':
     #                                         max_leaf_nodes=None, n_jobs=-1, 
     #                                         random_state=1))
     # model.evaluate_model(LGBMRegressor())
-    print(model.plot_apt('광명한진타운'))
+    # print(model.plot_apt('광명한진타운'))
