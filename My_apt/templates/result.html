@@ -11,11 +11,15 @@
         <a href="{{url_for('main.prediction')}}">
             <button type="button" class="btn btn-outline-success">다시 예측하기</button>
         </a>
+        <div id = "chart"></div>
         
     </div>
+
+    <!-- plotly CDN -->
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    <script type='text/javascript'>
-        var graphs = {{graphJSON | safe}};
-        Plotly.plot('chart',graphs,{});
+    <script>
+        var graph = {{ graphJSON | safe}};
+        Plotly.plot("chart", graph, {})
+        
     </script>
 {% endblock %}

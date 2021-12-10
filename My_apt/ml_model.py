@@ -211,7 +211,11 @@ class AptSales_Model:
     
     def plot_apt(self, apt_nm):
         df = self.get_data_with_aptnm(apt_nm)
-        fig = px.bar(df, x='method', y='value')
+        fig = px.bar(df, x='method', y='value', color_continuous_scale="Greens")
+        plt.xlabel('apt_nm')
+        plt.ylabel('SALES')
+        ticklabel = ['평균 매매가', '최소 매매가', '최대 매매가']
+        plt.xticks(labels=ticklabel)
         graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
         return graphJSON
 
