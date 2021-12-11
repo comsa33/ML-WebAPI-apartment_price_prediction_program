@@ -46,6 +46,10 @@ def result(usr_info):
 def dashboard():
     return render_template('dashboard.html'), 200
 
+@main_bp.route('/dashboard/numeric')        
+def dashboard2():
+    return render_template('dashboard2.html'), 200
+
 @main_bp.route('/predict/')        
 def prediction():
     month = str(datetime.today().month).zfill(2)
