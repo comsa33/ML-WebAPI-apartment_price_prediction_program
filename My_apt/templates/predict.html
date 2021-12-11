@@ -182,4 +182,19 @@
     </div>
 
 </div>
+<p style="color:rgb(58, 58, 58); margin-left:10vw; margin-bottom: -0.1vw; font-size: 2.5vw;">지역별 아파트 평균 매매가</p>
+<div class="container-fluid" style="height:50vw; width:80%; border: 0.7vw solid #ccc;">
+    <div id="Container"
+        style="padding-bottom:100%; position:relative; display:block; width: 100%;">
+        <iframe 
+        id="dashboard_iframe" 
+        width="100%" 
+        height="100%" 
+        src="{{url_for('main.map')}}" 
+        frameborder="0" 
+        allowfullscreen="" 
+        style="position:absolute; top:0; left: 0">
+        </iframe>
+    </div>
+  </div>
 {% endblock %}

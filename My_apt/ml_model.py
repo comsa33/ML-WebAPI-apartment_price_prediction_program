@@ -85,7 +85,14 @@ class AptSales_Model:
         self.conn.commit()
 
         return df_copy
-        
+    
+    def create_map_data(self):
+        df = pd.read_sql("SELECT * FROM apt_sales;", self.conn, index_col='Id')
+        df['EMD_CD'] = df['LEGALDONG_SIGNGU_TYPE_CD']+df['LEGALDONG_EMD_TYPE_CD']
+        df['EMD_CD'] = df['EMD_CD'].apply(lambda x: x[:-2])
+        df['SALES'] = df['SALES'].apply(lambda x: x*10000)
+        df_new = df[['LEGALDONG_NM', 'EMD_CD', 'SALES']]
+        return df_new
 
     ## draw heatmap for correlations of data
     def plot_corr_heatmap(self):

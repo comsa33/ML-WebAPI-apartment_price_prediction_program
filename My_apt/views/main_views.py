@@ -3,6 +3,8 @@ from datetime import datetime
 from My_apt.ml_model import AptSales_Model
 from sklearn.ensemble import RandomForestRegressor
 import pickle
+import folium
+import json
 
 main_bp = Blueprint('main', __name__)
 
@@ -19,7 +21,7 @@ def get_input():
         apt_nm = request.form["apt"]
         apt_fl = request.form["floor"]
         apt_use = request.form["space"]
-        return redirect(url_for("main.result", usr_info=[apt_nm, apt_fl, apt_use])), 200
+        return redirect(url_for("main.result", usr_info=[apt_nm, apt_fl, apt_use]))
     else:
         month = str(datetime.today().month).zfill(2)
         day = str(datetime.today().day).zfill(2)
@@ -66,3 +68,47 @@ def model():
 @main_bp.route('/project/presentation')        
 def presentation():
     return render_template('presentation.html'), 200
+
+@main_bp.route('/map/folium')
+def map():
+    model = AptSales_Model()
+    map_data = model.create_map_data()
+
+    m = folium.Map(
+    location=[37.45, 126.83],
+    zoom_start=13.2,
+    tiles='Stamen Toner')
+
+    geo_data = './My_apt/gwangmyungsi.geojson'
+
+    with open(geo_data, mode='rt', encoding='utf-8') as f:
+        geo = json.loads(f.read())
+        f.close()
+
+    highlight_function = lambda x: {'fillColor': '#000000', 
+                                'color':'#000000', 
+                                'fillOpacity': 0.50, 
+                                'weight': 0.1}
+
+    choropleth = folium.Choropleth(geo_data=geo_data, 
+                    data = map_data,
+                    columns=['LEGALDONG_NM', 'SALES'],
+                    key_on='feature.properties.EMD_KOR_NM',
+                    fill_color='YlGnBu',
+                    fill_opacity=0.8,
+                    highlight_function=highlight_function,
+                    nan_fill_color="white",
+                    highlight=True,
+                    legend_name='지역별(동) 아파트 매매가'
+                    ).add_to(m)
+
+    tooltip=folium.features.GeoJsonTooltip(
+            fields=['EMD_KOR_NM'],
+            aliases=['법정동명: '],
+            style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;"))
+
+    folium.LayerControl().add_to(m)
+    choropleth.geojson.add_child(tooltip)
+
+
+    return m._repr_html_()

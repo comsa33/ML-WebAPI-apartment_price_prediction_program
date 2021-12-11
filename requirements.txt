@@ -9,6 +9,7 @@ cryptography
 cycler 
 dnspython==1.16.0
 Flask 
+folium
 fonttools==4.25.0
 gunicorn 
 idna 

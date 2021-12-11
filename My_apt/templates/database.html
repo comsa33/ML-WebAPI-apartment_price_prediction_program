@@ -9,18 +9,21 @@
         
         <p class="fw-lighter"
         style="text-align:left; margin-left: 5vw; font-size:2vw;">1. DATA SEARCH</p>   
-        <img style="margin-bottom: 70px;"
-        src="{{url_for('static',filename = 'images/openapi.gif')}}" class="img-fluid" alt="광명시 아파트 매매 실거래 데이터 open api를 통해 가져오기">
-        
+        <div style="width: 60vw; border: 0.5vw solid #ccc; padding:0.3vw 0.3vw; margin:auto;">
+            <img style="margin-bottom: 0px;"
+            src="{{url_for('static',filename = 'images/openapi.gif')}}" class="img-fluid" alt="광명시 아파트 매매 실거래 데이터 open api를 통해 가져오기">
+        </div>
         <p class="fw-lighter"
-        style="text-align:left; margin-left: 5vw; font-size:2vw;">2. PULLING DATA to MONGODB (JSON)</p>   
-        <img style="margin-bottom: 70px;"
-        src="{{url_for('static',filename = 'images/mongodb.gif')}}" class="img-fluid" alt="데이터를 MongoDB에 json형태로 적재하기">
-   
+        style="text-align:left; margin-left: 5vw; margin-top: 2vw; font-size:2vw;">2. PULLING DATA to MONGODB (JSON)</p>   
+        <div style="width: 60vw; border: 0.5vw solid #ccc; padding:0.3vw 0.3vw; margin:auto; ">
+            <img style="margin-bottom: 0px;"
+            src="{{url_for('static',filename = 'images/mongodb.gif')}}" class="img-fluid" alt="데이터를 MongoDB에 json형태로 적재하기">
+        </div>
         <p class="fw-lighter"
-        style="text-align:left; margin-left: 5vw; font-size:2vw;">3. TRANSFER DATA from MONGODB to SQLITE3</p>   
-        <img style="margin-bottom: 70px;"
-        src="{{url_for('static',filename = 'images/sqlite.gif')}}" class="img-fluid" alt="MongoDB에서 Sqlite3에 RDB형태로 옮기기">
-   
+        style="text-align:left; margin-left: 5vw; margin-top: 2vw; font-size:2vw;">3. TRANSFER DATA from MONGODB to SQLITE3</p>   
+        <div style="width: 60vw; border: 0.5vw solid #ccc; padding:0.3vw 0.3vw; margin:auto; ">
+            <img style="margin-bottom: 0px;"
+            src="{{url_for('static',filename = 'images/sqlite.gif')}}" class="img-fluid" alt="MongoDB에서 Sqlite3에 RDB형태로 옮기기">
+        </div>
     </div>
 {% endblock %}
