@@ -39,7 +39,7 @@ def result(usr_info):
     pred = model.predict_sales(RandomForestRegressor(), usr_info[0], usr_info[1], usr_info[2])
     pred = format(int(pred[0]/10000), ',')
     return render_template('result.html', 
-                            month=month, day=day, year=year, pred1=str(pred)[:-1], pred2=str(pred)[-1:], graphJSON=graphJSON,
+                            month=month, day=day, year=year, pred1=str(pred)[:-5], pred2=round(int(str(pred)[-5:].replace(',', '')), -2), graphJSON=graphJSON,
                             apt_nm=usr_info[0], apt_fl=usr_info[1], apt_use=usr_info[2]), 200
 
 @main_bp.route('/dashboard')        
