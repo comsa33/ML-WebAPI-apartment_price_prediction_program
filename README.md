@@ -28,3 +28,5 @@ https://my-apt.herokuapp.com/
 
 ## Data
 > 광명시 공공 데이터 open api
+![openapi](https://user-images.githubusercontent.com/61719257/149121212-cd8dcc58-427c-4843-b382-316ce44f0bce.gif)
+![mongodb](https://user-images.githubusercontent.com/61719257/149121228-f84a3828-c7e5-4cdb-881b-61961c768994.gif)
