@@ -30,3 +30,12 @@ https://my-apt.herokuapp.com/
 > 광명시 공공 데이터 open api
 ![openapi](https://user-images.githubusercontent.com/61719257/149121212-cd8dcc58-427c-4843-b382-316ce44f0bce.gif)
 ![mongodb](https://user-images.githubusercontent.com/61719257/149121228-f84a3828-c7e5-4cdb-881b-61961c768994.gif)
+
+## Evaluation
+|MODELS   |MAE    |RMSE   |R2_SCORE   |
+|---------|-------|-------|-----------|
+|LinearRegression|174718437.51 KRW|238319972.99 KRW|0.08|
+|ElasticNetCV|274784163.17 KRW|360266710.18 KRW|-1.1|
+|RandomForestRegressor|63981882.48 KRW|113676925.82 KRW|0.9|
+|XGB Regressor|149348580.28 KRW|180378806.28 KRW|0.47|
+|LGBM Regressor|154223908.87 KRW|186687372.47 KRW|0.44|
